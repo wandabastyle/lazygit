@@ -2,5 +2,9 @@ customCommands:
   - key: "C"
     context: "files"
     description: "AI commit"
-    command: "bash -lc '$HOME/.config/lazygit/ai-commit.sh'"
+    prompts:
+      - type: "input"
+        title: "Commit message"
+        initialValue: "{{ runCommand \"bash -lc '$HOME/.config/nvim/scripts/git-commit-ai.py'\" }}"
+    command: "git commit -a -m '{{ index .PromptResponses 0 }}'"
     output: terminal
