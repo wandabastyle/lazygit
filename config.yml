@@ -1,0 +1,19 @@
+customCommands:
+  - key: "C"
+    context: "files"
+    description: "AI commit message"
+    prompts:
+      - type: "menu"
+        title: "Commit using AI message?"
+        options:
+          - name: "Yes"
+            value: "yes"
+          - name: "No"
+            value: "no"
+      - type: "input"
+        title: "Commit message"
+        initialValue: "{{ if eq (index .PromptResponses 0) \"yes\" }}{{ runCommand \"bash -lc '$HOME/.config/nvim/scripts/git-commit-ai.py'\" }}{{ end }}"
+    command: >
+      bash -lc 'msg="{{index .PromptResponses 1}}"; [ -n "$msg" ] && git commit -m "$msg"'
+
+    output: terminal
