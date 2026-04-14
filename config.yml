@@ -26,5 +26,5 @@ customCommands:
           {{ runCommand "bash -lc \"git diff origin/main...HEAD | opencode run 'Write a concise GitHub PR body as bullet points. No intro text. No code fences.' > /tmp/oc-body 2>&1 && tail -n +4 /tmp/oc-body\"" }}
 
     command: >-
-      echo gh pr create --title {{ .Form.PrTitle | quote }} --body {{ .Form.PrBody | quote }}
-    output: terminal
+      gh pr create --title {{ .Form.PrTitle | quote }} --body {{ .Form.PrBody | quote }}
+    output: none
