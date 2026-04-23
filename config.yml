@@ -1,7 +1,10 @@
+promptToReturnFromSubprocess: false
+
 customCommands:
   - key: "C"
     context: "files"
     description: "AI commit"
+    loadingText: "Preparing AI commit message"
     command: "GIT_COMMIT_AI=1 git commit -a"
     output: terminal
   - key: "P"
