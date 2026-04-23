@@ -2,13 +2,8 @@ customCommands:
   - key: "C"
     context: "files"
     description: "AI commit"
-    prompts:
-      - type: "input"
-        key: "CommitMsg"
-        title: "Commit message"
-        initialValue: "{{ runCommand \"bash -lc '$HOME/.config/nvim/scripts/git-commit-ai.py'\" }}"
-    command: "git commit -a -m {{ .Form.CommitMsg | quote }}"
-    output: none
+    command: "GIT_COMMIT_AI=1 git commit -a"
+    output: terminal
   - key: "P"
     context: "localBranches"
     description: "AI PR create"
