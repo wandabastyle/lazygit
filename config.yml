@@ -17,13 +17,13 @@ customCommands:
         key: "PrTitle"
         title: "PR title"
         initialValue: >-
-          {{ runCommand "bash -lc \"git diff origin/main...HEAD | opencode run 'Write a short GitHub PR title in conventional commit style (max 72 chars). Only output the title.' > /tmp/oc-title 2>&1 && tail -n +4 /tmp/oc-title\"" }}
+          {{ runCommand "bash -lc '$HOME/.config/nvim/scripts/git-commit-ai.py --pr-title'" }}
 
       - type: "input"
         key: "PrBody"
         title: "PR body"
         initialValue: >-
-          {{ runCommand "bash -lc \"git diff origin/main...HEAD | opencode run 'Write a concise GitHub PR body as bullet points. No intro text. No code fences.' > /tmp/oc-body 2>&1 && tail -n +4 /tmp/oc-body\"" }}
+          {{ runCommand "bash -lc '$HOME/.config/nvim/scripts/git-commit-ai.py --pr-body'" }}
 
     command: >-
       gh pr create --title {{ .Form.PrTitle | quote }} --body {{ .Form.PrBody | quote }}
