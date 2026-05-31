@@ -20,3 +20,7 @@ customCommands:
     command: >-
       gh pr create --title {{ .Form.PrTitle | quote }} --body {{ .Form.PrBody | quote }}
     output: none
+
+os:
+  copyToClipboardCmd: 'printf "\033]52;c;$(cat | base64 -w 0)\007"'
+  readFromClipboardCmd: 'echo "not supported"'
